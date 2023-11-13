@@ -1,37 +1,37 @@
 #!/bin/sh
 # ----------------------------------------------------------------------------
-# Licensed to the Apache Software Foundation (ASF) under one
-# or more contributor license agreements.  See the NOTICE file
-# distributed with this work for additional information
-# regarding copyright ownership.  The ASF licenses this file
-# to you under the Apache License, Version 2.0 (the
-# "License"); you may not use this file except in compliance
-# with the License.  You may obtain a copy of the License at
+# Licenciado para a Apache Software Foundation (ASF) sob um
+# ou mais acordos de licença do colaborador. Consulte o arquivo NOTICE
+# distribuído com este trabalho para obter informações adicionais
+# sobre a propriedade dos direitos autorais. A ASF licencia este arquivo
+# para você sob a Licença Apache, Versão 2.0 (a
+# "Licença"); você não pode usar este arquivo, exceto em conformidade
+# com a Licença. Você pode obter uma cópia da Licença em
 #
 #    https://www.apache.org/licenses/LICENSE-2.0
 #
-# Unless required by applicable law or agreed to in writing,
-# software distributed under the License is distributed on an
-# "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-# KIND, either express or implied.  See the License for the
-# specific language governing permissions and limitations
-# under the License.
+# A menos que seja exigido por lei aplicável ou acordado por escrito,
+# o software distribuído sob a Licença é distribuído em um
+# "COMO ESTÁ", SEM GARANTIAS OU CONDIÇÕES DE QUALQUER
+# TIPO, expressas ou implícitas. Consulte a Licença para obter a
+# linguagem específica que rege as permissões e limitações sob a
+# Licença.
 # ----------------------------------------------------------------------------
 
 # ----------------------------------------------------------------------------
-# Maven Start Up Batch script
+# Script de inicialização do Maven
 #
-# Required ENV vars:
+# Variáveis de ambiente obrigatórias:
 # ------------------
-#   JAVA_HOME - location of a JDK home dir
+#   JAVA_HOME - localização do diretório home do JDK
 #
-# Optional ENV vars
+# Variáveis de ambiente opcionais:
 # -----------------
-#   M2_HOME - location of maven2's installed home dir
-#   MAVEN_OPTS - parameters passed to the Java VM when running Maven
-#     e.g. to debug Maven itself, use
+#   M2_HOME - localização do diretório home instalado do Maven
+#   MAVEN_OPTS - parâmetros passados para a VM Java ao executar o Maven
+#     por exemplo, para depurar o próprio Maven, use
 #       set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
-#   MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+#   MAVEN_SKIP_RC - sinalizador para desativar o carregamento de arquivos mavenrc
 # ----------------------------------------------------------------------------
 
 if [ -z "$MAVEN_SKIP_RC" ] ; then
@@ -46,7 +46,7 @@ if [ -z "$MAVEN_SKIP_RC" ] ; then
 
 fi
 
-# OS specific support.  $var _must_ be set to either true or false.
+# Suporte específico do SO. $var DEVE ser definido como true ou false.
 cygwin=false;
 darwin=false;
 mingw=false
@@ -54,8 +54,8 @@ case "`uname`" in
   CYGWIN*) cygwin=true ;;
   MINGW*) mingw=true;;
   Darwin*) darwin=true
-    # Use /usr/libexec/java_home if available, otherwise fall back to /Library/Java/Home
-    # See https://developer.apple.com/library/mac/qa/qa1170/_index.html
+    # Use /usr/libexec/java_home se disponível, caso contrário, use /Library/Java/Home
+    # Veja https://developer.apple.com/library/mac/qa/qa1170/_index.html
     if [ -z "$JAVA_HOME" ]; then
       if [ -x "/usr/libexec/java_home" ]; then
         export JAVA_HOME="`/usr/libexec/java_home`"
@@ -73,10 +73,10 @@ if [ -z "$JAVA_HOME" ] ; then
 fi
 
 if [ -z "$M2_HOME" ] ; then
-  ## resolve links - $0 may be a link to maven's home
+  ## resolver links - $0 pode ser um link para o diretório principal do Maven
   PRG="$0"
 
-  # need this for relative symlinks
+  # necessário para links simbólicos relativos
   while [ -h "$PRG" ] ; do
     ls=`ls -ld "$PRG"`
     link=`expr "$ls" : '.*-> \(.*\)$'`
@@ -91,14 +91,14 @@ if [ -z "$M2_HOME" ] ; then
 
   M2_HOME=`dirname "$PRG"`/..
 
-  # make it fully qualified
+  # torná-lo totalmente qualificado
   M2_HOME=`cd "$M2_HOME" && pwd`
 
   cd "$saveddir"
   # echo Using m2 at $M2_HOME
 fi
 
-# For Cygwin, ensure paths are in UNIX format before anything is touched
+# Para Cygwin, garanta que os caminhos estejam no formato UNIX antes de qualquer manipulação
 if $cygwin ; then
   [ -n "$M2_HOME" ] &&
     M2_HOME=`cygpath --unix "$M2_HOME"`
@@ -108,7 +108,7 @@ if $cygwin ; then
     CLASSPATH=`cygpath --path --unix "$CLASSPATH"`
 fi
 
-# For Mingw, ensure paths are in UNIX format before anything is touched
+# Para Mingw, garanta que os caminhos estejam no formato UNIX antes de qualquer manipulação
 if $mingw ; then
   [ -n "$M2_HOME" ] &&
     M2_HOME="`(cd "$M2_HOME"; pwd)`"
@@ -119,7 +119,7 @@ fi
 if [ -z "$JAVA_HOME" ]; then
   javaExecutable="`which javac`"
   if [ -n "$javaExecutable" ] && ! [ "`expr \"$javaExecutable\" : '\([^ ]*\)'`" = "no" ]; then
-    # readlink(1) is not available as standard on Solaris 10.
+    # readlink(1) não está disponível como padrão no Solaris 10.
     readLink=`which readlink`
     if [ ! `expr "$readLink" : '\([^ ]*\)'` = "no" ]; then
       if $darwin ; then
@@ -139,7 +139,7 @@ fi
 if [ -z "$JAVACMD" ] ; then
   if [ -n "$JAVA_HOME"  ] ; then
     if [ -x "$JAVA_HOME/jre/sh/java" ] ; then
-      # IBM's JDK on AIX uses strange locations for the executables
+      # O JDK da IBM no AIX usa localizações estranhas para os executáveis
       JAVACMD="$JAVA_HOME/jre/sh/java"
     else
       JAVACMD="$JAVA_HOME/bin/java"
@@ -150,24 +150,24 @@ if [ -z "$JAVACMD" ] ; then
 fi
 
 if [ ! -x "$JAVACMD" ] ; then
-  echo "Error: JAVA_HOME is not defined correctly." >&2
-  echo "  We cannot execute $JAVACMD" >&2
+  echo "Erro: JAVA_HOME não está definido corretamente." >&2
+  echo "  Não podemos executar $JAVACMD" >&2
   exit 1
 fi
 
 if [ -z "$JAVA_HOME" ] ; then
-  echo "Warning: JAVA_HOME environment variable is not set."
+  echo "Aviso: a variável de ambiente JAVA_HOME não está definida."
 fi
 
 CLASSWORLDS_LAUNCHER=org.codehaus.plexus.classworlds.launcher.Launcher
 
-# traverses directory structure from process work directory to filesystem root
-# first directory with .mvn subdirectory is considered project base directory
+# percorre a estrutura de diretórios do diretório de trabalho do processo até o sistema de arquivos raiz
+# o primeiro diretório com subdiretório .mvn é considerado o diretório base do projeto
 find_maven_basedir() {
 
   if [ -z "$1" ]
   then
-    echo "Path not specified to find_maven_basedir"
+    echo "Caminho não especificado para find_maven_basedir"
     return 1
   fi
 
@@ -178,16 +178,16 @@ find_maven_basedir() {
       basedir=$wdir
       break
     fi
-    # workaround for JBEAP-8937 (on Solaris 10/Sparc)
+    # solução alternativa para JBEAP-8937 (no Solaris 10/Sparc)
     if [ -d "${wdir}" ]; then
       wdir=`cd "$wdir/.."; pwd`
     fi
-    # end of workaround
+    # fim da solução alternativa
   done
   echo "${basedir}"
 }
 
-# concatenates all lines of a file
+# concatena todas as linhas de um arquivo
 concat_lines() {
   if [ -f "$1" ]; then
     echo "$(tr -s '\n' ' ' < "$1")"
@@ -200,16 +200,16 @@ if [ -z "$BASE_DIR" ]; then
 fi
 
 ##########################################################################################
-# Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
-# This allows using the maven wrapper in projects that prohibit checking in binary data.
+# Extensão para permitir o download automático do maven-wrapper.jar do Maven-central
+# Isso permite o uso do wrapper maven em projetos que proíbem a verificação de dados binários.
 ##########################################################################################
 if [ -r "$BASE_DIR/.mvn/wrapper/maven-wrapper.jar" ]; then
     if [ "$MVNW_VERBOSE" = true ]; then
-      echo "Found .mvn/wrapper/maven-wrapper.jar"
+      echo "Encontrado .mvn/wrapper/maven-wrapper.jar"
     fi
 else
     if [ "$MVNW_VERBOSE" = true ]; then
-      echo "Couldn't find .mvn/wrapper/maven-wrapper.jar, downloading it ..."
+      echo "Não foi possível encontrar .mvn/wrapper/maven-wrapper.jar, baixando ..."
     fi
     if [ -n "$MVNW_REPOURL" ]; then
       jarUrl="$MVNW_REPOURL/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
@@ -221,7 +221,7 @@ else
       esac
     done < "$BASE_DIR/.mvn/wrapper/maven-wrapper.properties"
     if [ "$MVNW_VERBOSE" = true ]; then
-      echo "Downloading from: $jarUrl"
+      echo "Baixando de: $jarUrl"
     fi
     wrapperJarPath="$BASE_DIR/.mvn/wrapper/maven-wrapper.jar"
     if $cygwin; then
@@ -230,7 +230,7 @@ else
 
     if command -v wget > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
-          echo "Found wget ... using wget"
+          echo "Encontrado wget ... usando wget"
         fi
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
             wget "$jarUrl" -O "$wrapperJarPath"
@@ -239,7 +239,7 @@ else
         fi
     elif command -v curl > /dev/null; then
         if [ "$MVNW_VERBOSE" = true ]; then
-          echo "Found curl ... using curl"
+          echo "Encontrado curl ... usando curl"
         fi
         if [ -z "$MVNW_USERNAME" ] || [ -z "$MVNW_PASSWORD" ]; then
             curl -o "$wrapperJarPath" "$jarUrl" -f
@@ -249,25 +249,25 @@ else
 
     else
         if [ "$MVNW_VERBOSE" = true ]; then
-          echo "Falling back to using Java to download"
+          echo "Recorrendo ao uso do Java para baixar"
         fi
         javaClass="$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.java"
-        # For Cygwin, switch paths to Windows format before running javac
+        # Para Cygwin, mude os caminhos para o formato Windows antes de executar o javac
         if $cygwin; then
           javaClass=`cygpath --path --windows "$javaClass"`
         fi
         if [ -e "$javaClass" ]; then
             if [ ! -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
                 if [ "$MVNW_VERBOSE" = true ]; then
-                  echo " - Compiling MavenWrapperDownloader.java ..."
+                  echo " - Compilando MavenWrapperDownloader.java ..."
                 fi
-                # Compiling the Java class
+                # Compilando a classe Java
                 ("$JAVA_HOME/bin/javac" "$javaClass")
             fi
             if [ -e "$BASE_DIR/.mvn/wrapper/MavenWrapperDownloader.class" ]; then
-                # Running the downloader
+                # Executando o downloader
                 if [ "$MVNW_VERBOSE" = true ]; then
-                  echo " - Running MavenWrapperDownloader.java ..."
+                  echo " - Executando MavenWrapperDownloader.java ..."
                 fi
                 ("$JAVA_HOME/bin/java" -cp .mvn/wrapper MavenWrapperDownloader "$MAVEN_PROJECTBASEDIR")
             fi
@@ -275,7 +275,7 @@ else
     fi
 fi
 ##########################################################################################
-# End of extension
+# Fim da extensão
 ##########################################################################################
 
 export MAVEN_PROJECTBASEDIR=${MAVEN_BASEDIR:-"$BASE_DIR"}
@@ -284,7 +284,7 @@ if [ "$MVNW_VERBOSE" = true ]; then
 fi
 MAVEN_OPTS="$(concat_lines "$MAVEN_PROJECTBASEDIR/.mvn/jvm.config") $MAVEN_OPTS"
 
-# For Cygwin, switch paths to Windows format before running java
+# Para Cygwin, alterne os caminhos para o formato Windows antes de executar o java
 if $cygwin; then
   [ -n "$M2_HOME" ] &&
     M2_HOME=`cygpath --path --windows "$M2_HOME"`
@@ -296,8 +296,8 @@ if $cygwin; then
     MAVEN_PROJECTBASEDIR=`cygpath --path --windows "$MAVEN_PROJECTBASEDIR"`
 fi
 
-# Provide a "standardized" way to retrieve the CLI args that will
-# work with both Windows and non-Windows executions.
+# Forneça uma maneira "padronizada" de recuperar os argumentos da CLI que funcionará
+# com ambas as execuções no Windows e não no Windows.
 MAVEN_CMD_LINE_ARGS="$MAVEN_CONFIG $@"
 export MAVEN_CMD_LINE_ARGS
 
@@ -306,5 +306,4 @@ WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 exec "$JAVACMD" \
   $MAVEN_OPTS \
   -classpath "$MAVEN_PROJECTBASEDIR/.mvn/wrapper/maven-wrapper.jar" \
-  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASEDIR}" \
-  ${WRAPPER_LAUNCHER} $MAVEN_CONFIG "$@"
+  "-Dmaven.home=${M2_HOME}" "-Dmaven.multiModuleProjectDirectory=${MAVEN_PROJECTBASE
