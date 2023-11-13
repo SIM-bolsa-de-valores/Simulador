@@ -1,51 +1,45 @@
 @REM ----------------------------------------------------------------------------
-@REM Licensed to the Apache Software Foundation (ASF) under one
-@REM or more contributor license agreements.  See the NOTICE file
-@REM distributed with this work for additional information
-@REM regarding copyright ownership.  The ASF licenses this file
-@REM to you under the Apache License, Version 2.0 (the
-@REM "License"); you may not use this file except in compliance
-@REM with the License.  You may obtain a copy of the License at
+@REM Licenciado para a Apache Software Foundation (ASF) sob um
+@REM ou mais acordos de licença de contribuidores. Consulte o arquivo NOTICE
+@REM distribuído com este trabalho para obter informações adicionais
+@REM sobre a propriedade dos direitos autorais. A ASF licencia este arquivo
+@REM para você sob a Licença Apache, Versão 2.0 (a
+@REM "Licença"); você não pode usar este arquivo exceto em conformidade
+@REM com a Licença. Você pode obter uma cópia da Licença em
 @REM
 @REM    https://www.apache.org/licenses/LICENSE-2.0
 @REM
-@REM Unless required by applicable law or agreed to in writing,
-@REM software distributed under the License is distributed on an
-@REM "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-@REM KIND, either express or implied.  See the License for the
-@REM specific language governing permissions and limitations
-@REM under the License.
-@REM ----------------------------------------------------------------------------
+
 
 @REM ----------------------------------------------------------------------------
-@REM Maven Start Up Batch script
+@REM Script de Inicialização do Maven
 @REM
-@REM Required ENV vars:
-@REM JAVA_HOME - location of a JDK home dir
+@REM Variáveis de ambiente obrigatórias:
+@REM JAVA_HOME - localização do diretório home do JDK
 @REM
-@REM Optional ENV vars
-@REM M2_HOME - location of maven2's installed home dir
-@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
-@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
-@REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
-@REM     e.g. to debug Maven itself, use
+@REM Variáveis de ambiente opcionais:
+@REM M2_HOME - localização do diretório home instalado do maven2
+@REM MAVEN_BATCH_ECHO - definir como 'on' para habilitar a exibição dos comandos em lote
+@REM MAVEN_BATCH_PAUSE - definir como 'on' para esperar por uma tecla antes de encerrar
+@REM MAVEN_OPTS - parâmetros passados para a JVM Java ao executar o Maven
+@REM     por exemplo, para depurar o Maven em si, use
 @REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
-@REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
+@REM MAVEN_SKIP_RC - sinalizador para desabilitar o carregamento de arquivos mavenrc
 @REM ----------------------------------------------------------------------------
 
-@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
+@REM Inicie todas as linhas REM com '@' caso MAVEN_BATCH_ECHO esteja definido como 'on'
 @echo off
-@REM set title of command window
+@REM defina o título da janela de comando
 title %0
-@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
+@REM habilite a exibição definindo MAVEN_BATCH_ECHO como 'on'
 @if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
 
-@REM set %HOME% to equivalent of $HOME
+@REM defina %HOME% como equivalente a $HOME
 if "%HOME%" == "" (set "HOME=%HOMEDRIVE%%HOMEPATH%")
 
-@REM Execute a user defined script before this one
+@REM Execute um script definido pelo usuário antes deste
 if not "%MAVEN_SKIP_RC%" == "" goto skipRcPre
-@REM check for pre script, once with legacy .bat ending and once with .cmd ending
+@REM verifique o script pré, uma vez com a extensão .bat antiga e uma vez com a extensão .cmd
 if exist "%HOME%\mavenrc_pre.bat" call "%HOME%\mavenrc_pre.bat"
 if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
 :skipRcPre
@@ -54,16 +48,16 @@ if exist "%HOME%\mavenrc_pre.cmd" call "%HOME%\mavenrc_pre.cmd"
 
 set ERROR_CODE=0
 
-@REM To isolate internal variables from possible post scripts, we use another setlocal
+@REM Para isolar as variáveis internas de possíveis scripts posteriores, usamos outro setlocal
 @setlocal
 
-@REM ==== START VALIDATION ====
+@REM ==== INÍCIO DA VALIDAÇÃO ====
 if not "%JAVA_HOME%" == "" goto OkJHome
 
 echo.
-echo Error: JAVA_HOME not found in your environment. >&2
-echo Please set the JAVA_HOME variable in your environment to match the >&2
-echo location of your Java installation. >&2
+echo Erro: JAVA_HOME não encontrado em seu ambiente. >&2
+echo Por favor, defina a variável JAVA_HOME em seu ambiente para coincidir com o >&2
+echo localização da sua instalação Java. >&2
 echo.
 goto error
 
@@ -71,36 +65,36 @@ goto error
 if exist "%JAVA_HOME%\bin\java.exe" goto init
 
 echo.
-echo Error: JAVA_HOME is set to an invalid directory. >&2
+echo Erro: JAVA_HOME está definido para um diretório inválido. >&2
 echo JAVA_HOME = "%JAVA_HOME%" >&2
-echo Please set the JAVA_HOME variable in your environment to match the >&2
-echo location of your Java installation. >&2
+echo Por favor, defina a variável JAVA_HOME em seu ambiente para coincidir com o >&2
+echo localização da sua instalação Java. >&2
 echo.
 goto error
 
-@REM ==== END VALIDATION ====
+@REM ==== FIM DA VALIDAÇÃO ====
 
 :init
 
-@REM Find the project base dir, i.e. the directory that contains the folder ".mvn".
-@REM Fallback to current working directory if not found.
+@REM Encontre o diretório base do projeto, ou seja, o diretório que contém a pasta ".mvn".
+@REM Recorra ao diretório de trabalho atual se não for encontrado.
 
 set MAVEN_PROJECTBASEDIR=%MAVEN_BASEDIR%
-IF NOT "%MAVEN_PROJECTBASEDIR%"=="" goto endDetectBaseDir
+SE NÃO "%MAVEN_PROJECTBASEDIR%"=="" VÁ para endDetectBaseDir
 
 set EXEC_DIR=%CD%
 set WDIR=%EXEC_DIR%
 :findBaseDir
-IF EXIST "%WDIR%"\.mvn goto baseDirFound
+SE EXISTIR "%WDIR%"\.mvn VÁ para baseDirFound
 cd ..
-IF "%WDIR%"=="%CD%" goto baseDirNotFound
+SE "%WDIR%"=="%CD%" VÁ para baseDirNotFound
 set WDIR=%CD%
-goto findBaseDir
+VÁ para findBaseDir
 
 :baseDirFound
 set MAVEN_PROJECTBASEDIR=%WDIR%
 cd "%EXEC_DIR%"
-goto endDetectBaseDir
+VÁ para endDetectBaseDir
 
 :baseDirNotFound
 set MAVEN_PROJECTBASEDIR=%EXEC_DIR%
@@ -108,10 +102,10 @@ cd "%EXEC_DIR%"
 
 :endDetectBaseDir
 
-IF NOT EXIST "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" goto endReadAdditionalConfig
+SE NÃO EXISTIR "%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config" VÁ para endReadAdditionalConfig
 
-@setlocal EnableExtensions EnableDelayedExpansion
-for /F "usebackq delims=" %%a in ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") do set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
+@setlocal HabilitarExtensões HabilitarDelayedExpansion
+for /F "usebackq delims=" %%a em ("%MAVEN_PROJECTBASEDIR%\.mvn\jvm.config") faça set JVM_CONFIG_MAVEN_PROPS=!JVM_CONFIG_MAVEN_PROPS! %%a
 @endlocal & set JVM_CONFIG_MAVEN_PROPS=%JVM_CONFIG_MAVEN_PROPS%
 
 :endReadAdditionalConfig
@@ -122,45 +116,45 @@ set WRAPPER_LAUNCHER=org.apache.maven.wrapper.MavenWrapperMain
 
 set DOWNLOAD_URL="https://repo.maven.apache.org/maven2/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
 
-FOR /F "tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") DO (
-    IF "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
+PARA /F "tokens=1,2 delims==" %%A IN ("%MAVEN_PROJECTBASEDIR%\.mvn\wrapper\maven-wrapper.properties") FAÇA (
+    SE "%%A"=="wrapperUrl" SET DOWNLOAD_URL=%%B
 )
 
-@REM Extension to allow automatically downloading the maven-wrapper.jar from Maven-central
-@REM This allows using the maven wrapper in projects that prohibit checking in binary data.
-if exist %WRAPPER_JAR% (
-    if "%MVNW_VERBOSE%" == "true" (
-        echo Found %WRAPPER_JAR%
+@REM Extensão para permitir o download automático do maven-wrapper.jar do Maven-central
+@REM Isso permite o uso do wrapper do Maven em projetos que proíbem a verificação de dados binários.
+se existir %WRAPPER_JAR% (
+    se "%MVNW_VERBOSE%" == "true" (
+        echo Encontrado %WRAPPER_JAR%
     )
 ) else (
-    if not "%MVNW_REPOURL%" == "" (
+    se não "%MVNW_REPOURL%" == "" (
         SET DOWNLOAD_URL="%MVNW_REPOURL%/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
     )
-    if "%MVNW_VERBOSE%" == "true" (
-        echo Couldn't find %WRAPPER_JAR%, downloading it ...
-        echo Downloading from: %DOWNLOAD_URL%
+    se "%MVNW_VERBOSE%" == "true" (
+        echo Não foi possível encontrar %WRAPPER_JAR%, fazendo o download ...
+        echo Fazendo download de: %DOWNLOAD_URL%
     )
 
     powershell -Command "&{"^
 		"$webclient = new-object System.Net.WebClient;"^
-		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
+		"se (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
 		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
 		"}"^
 		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"^
 		"}"
-    if "%MVNW_VERBOSE%" == "true" (
-        echo Finished downloading %WRAPPER_JAR%
+    se "%MVNW_VERBOSE%" == "true" (
+        echo Download de %WRAPPER_JAR% concluído
     )
 )
-@REM End of extension
+@REM Fim da extensão
 
-@REM Provide a "standardized" way to retrieve the CLI args that will
-@REM work with both Windows and non-Windows executions.
+@REM Forneça uma maneira "padronizada" de recuperar os argumentos da CLI que
+@REM funcionará tanto com execuções do Windows quanto não do Windows.
 set MAVEN_CMD_LINE_ARGS=%*
 
 %MAVEN_JAVA_EXE% %JVM_CONFIG_MAVEN_PROPS% %MAVEN_OPTS% %MAVEN_DEBUG_OPTS% -classpath %WRAPPER_JAR% "-Dmaven.multiModuleProjectDirectory=%MAVEN_PROJECTBASEDIR%" %WRAPPER_LAUNCHER% %MAVEN_CONFIG% %*
-if ERRORLEVEL 1 goto error
-goto end
+se ERRORLEVEL 1 VÁ para error
+VÁ para end
 
 :error
 set ERROR_CODE=1
@@ -168,15 +162,15 @@ set ERROR_CODE=1
 :end
 @endlocal & set ERROR_CODE=%ERROR_CODE%
 
-if not "%MAVEN_SKIP_RC%" == "" goto skipRcPost
-@REM check for post script, once with legacy .bat ending and once with .cmd ending
-if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
-if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
+se não "%MAVEN_SKIP_RC%" == "" VÁ para skipRcPost
+@REM verificar o script pós, uma vez com a extensão .bat antiga e uma vez com a extensão .cmd
+se existir "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
+se existir "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
 :skipRcPost
 
-@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
-if "%MAVEN_BATCH_PAUSE%" == "on" pause
+@REM pause o script se MAVEN_BATCH_PAUSE estiver definido como 'on'
+se "%MAVEN_BATCH_PAUSE%" == "on" pause
 
-if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
+se "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%
 
 exit /B %ERROR_CODE%
