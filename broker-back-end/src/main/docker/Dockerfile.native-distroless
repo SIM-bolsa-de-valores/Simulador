@@ -1,15 +1,15 @@
 ####
-# This Dockerfile is used in order to build a distroless container that runs the Quarkus application in native (no JVM) mode
+# Este Dockerfile é usado para construir um contêiner distroless que executa a aplicação Quarkus no modo nativo (sem JVM)
 #
-# Before building the container image run:
+# Antes de construir a imagem do contêiner, execute:
 #
 # ./mvnw package -Pnative
 #
-# Then, build the image with:
+# Em seguida, construa a imagem com:
 #
 # docker build -f src/main/docker/Dockerfile.native-distroless -t quarkus/broker-back-end .
 #
-# Then run the container using:
+# Em seguida, execute o contêiner usando:
 #
 # docker run -i --rm -p 8080:8080 quarkus/broker-back-end
 #
