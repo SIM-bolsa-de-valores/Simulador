@@ -1,22 +1,22 @@
 ####
-# This Dockerfile is used in order to build a container that runs the Quarkus application in JVM mode
+# Este Dockerfile é utilizado para construir um contêiner que executa a aplicação Quarkus no modo JVM
 #
-# Before building the container image run:
+# Antes de construir a imagem do contêiner, execute:
 #
 # ./mvnw package
 #
-# Then, build the image with:
+# Em seguida, construa a imagem com:
 #
 # docker build -f src/main/docker/Dockerfile.jvm -t quarkus/broker-back-end-jvm .
 #
-# Then run the container using:
+# Em seguida, execute o contêiner usando:
 #
 # docker run -i --rm -p 8080:8080 quarkus/broker-back-end-jvm
 #
-# If you want to include the debug port into your docker image
-# you will have to expose the debug port (default 5005) like this :  EXPOSE 8080 5005
+# Se você deseja incluir a porta de depuração na sua imagem Docker
+# será necessário expor a porta de depuração (padrão 5005) assim: EXPOSE 8080 5005
 #
-# Then run the container using :
+# Em seguida, execute o contêiner usando:
 #
 # docker run -i --rm -p 8080:8080 -p 5005:5005 -e JAVA_ENABLE_DEBUG="true" quarkus/broker-back-end-jvm
 #
@@ -26,8 +26,8 @@ FROM registry.access.redhat.com/ubi8/ubi-minimal:8.3
 ARG JAVA_PACKAGE=java-11-openjdk-headless
 ARG RUN_JAVA_VERSION=1.3.8
 ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en'
-# Install java and the run-java script
-# Also set up permissions for user `1001`
+# Instala o Java e o script run-java
+# Também configura permissões para o usuário `1001`
 RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
     && microdnf update \
     && microdnf clean all \
@@ -40,9 +40,9 @@ RUN microdnf install curl ca-certificates ${JAVA_PACKAGE} \
     && chmod 540 /deployments/run-java.sh \
     && echo "securerandom.source=file:/dev/urandom" >> /etc/alternatives/jre/conf/security/java.security
 
-# Configure the JAVA_OPTIONS, you can add -XshowSettings:vm to also display the heap size.
+# Configura as JAVA_OPTIONS, você pode adicionar -XshowSettings:vm para exibir também o tamanho do heap.
 ENV JAVA_OPTIONS="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-# We make four distinct layers so if there are application changes the library layers can be re-used
+# Criamos quatro camadas distintas para que, se houver alterações na aplicação, as camadas de biblioteca possam ser reutilizadas
 COPY --chown=1001 target/quarkus-app/lib/ /deployments/lib/
 COPY --chown=1001 target/quarkus-app/*.jar /deployments/
 COPY --chown=1001 target/quarkus-app/app/ /deployments/app/
